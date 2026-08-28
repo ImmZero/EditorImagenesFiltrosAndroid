@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EditorImagenes.MainPage"
+             BackgroundImageSource="wai">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Botón de Salida en la esquina superior derecha -->
+        <Button Text="Salir" 
+                Grid.Row="0"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Clicked="OnExitButtonClicked"
+                BackgroundColor="Red"
+                TextColor="White"
+                Margin="10"/>
+        
+        <ScrollView Grid.Row="1">
+            <StackLayout>
+                <!-- Botón para seleccionar la imagen con dimensiones personalizadas -->
+                <Button Text="Seleccionar Imagen" 
+                    Clicked="OnSelectImageClicked" 
+                    BackgroundColor="Aqua" 
+                    TextColor="Black"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    Margin="10"/>
+                <!-- Ancho del botón -->
+                <!-- Margen alrededor del botón -->
+                <Label Text="Elige un filtro" 
+                   TextColor="Black"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   Margin="10"/>
+                <!-- ComboBox (Picker) para seleccionar el filtro de color -->
+                <Picker x:Name="colorFilterPicker" 
+                    Title="Elige un filtro" 
+                    SelectedIndexChanged="OnFilterSelected" 
+                    BackgroundColor="Violet" 
+                    TitleColor="Black"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    HorizontalTextAlignment="Center"
+                    Margin="10" >
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Original</x:String>
+                            <x:String>Gris</x:String>
+                            <x:String>Rojo</x:String>
+                            <x:String>Verde</x:String>
+                            <x:String>Azul</x:String>
+                            <x:String>Apertura</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label x:Name="statusLabel" 
+               Text="" 
+               HorizontalTextAlignment="Center" 
+               TextColor="Black"
+               Margin="5"/>
+                <!-- Vista de imagen para mostrar la imagen seleccionada -->
+                <Image x:Name="selectedImage"/>
+
+                <!-- Botón para guardar la imagen -->
+                <Button Text="Compartir Imagen" 
+                        Clicked="OnShareImageButtonClicked" 
+                        BackgroundColor="Green" 
+                        TextColor="White"
+                        HorizontalOptions="Center"
+                        Margin="10"
+                        WidthRequest="200"
+                        HeightRequest="50"/>
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
